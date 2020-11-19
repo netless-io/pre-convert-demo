@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "dependencies": {
+    "ali-oss": "^6.11.2",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2"
+  }
+}
