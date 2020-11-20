@@ -1,1 +1,21 @@
 @import 'tachyons';
+
+.grid-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 0.25em;
+  align-items: center;
+}
+
+.w6 {
+  width: 20rem;
+}
+
+.max-h-4 {
+  max-height: 16rem;
+}
+
+img {
+  max-width: 514px;
+  object-fit: scale-down;
+}

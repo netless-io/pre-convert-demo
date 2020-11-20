@@ -1,7 +1,15 @@
 {
   "endOfLine": "auto",
-  "semi": false,
+  "semi": true,
   "arrowParens": "avoid",
   "trailingComma": "none",
-  "singleQuote": true
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "printWidth": 120
+      }
+    }
+  ]
 }

@@ -5,41 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="title"></title>
   </head>
-  <body class="pa4">
+  <body class="pa4 ml-auto mr-auto mw7">
     <div class="flex">
-      <h1 class="ma0 flex-auto items-center" data-i18n="title"></h1>
+      <h1 class="ma0 flex-auto items-center normal" data-i18n="title"></h1>
       <select id="switch-language" class="ph3">
+        <option value="" disabled selected>Language</option>
         <option value="en">English</option>
         <option value="zh-CN">简体中文</option>
       </select>
     </div>
     <div class="mv3 ba b--black-20 br2">
-      <div class="pa3 bg-black-05">
-        <h4 class="ma0" data-i18n="step-1"></h4>
+      <div class="pa3 bg-black-05 br2 br--top">
+        <h4 class="ma0 black-90" data-i18n="step-1"></h4>
       </div>
-      <div class="pa3 f6"></div>
+      <div class="pa3 f6">
+        <div class="mb3">
+          <div class="gray mb2">
+            <span data-i18n="tip-6"></span>
+            <a
+              href="https://help.aliyun.com/document_detail/32069.html"
+              target="_blank"
+              class="blue underline-hover no-underline"
+              >help.aliyun.com/document_detail/32069</a
+            >
+            <span data-i18n="tip-7"></span>
+          </div>
+          <form id="oss-form" class="grid-form">
+            <label for="accessKeyId">accessKeyId:</label>
+            <input type="text" id="accessKeyId" autocomplete="off" />
+            <label for="accessKeySecret">accessKeySecret:</label>
+            <input type="password" id="accessKeySecret" autocomplete="off" />
+            <label for="stsToken"
+              ><a
+                href="https://help.aliyun.com/document_detail/32077.html?spm=a2c4g.11186623.2.7.225e39bfBVV9wm#concept-32077-zh"
+                target="_blank"
+                class="blue underline-hover no-underline"
+                >stsToken</a
+              >:</label
+            >
+            <input type="text" id="stsToken" autocomplete="off" />
+            <label for="region">region:</label>
+            <input type="text" id="region" placeholder="oss-cn-hangzhou" autocomplete="off" />
+            <label for="bucket">bucket:</label>
+            <input type="text" id="bucket" autocomplete="off" />
+            <label for="object">object:</label>
+            <input type="text" id="object" placeholder="filename.pptx" autocomplete="off" />
+            <label for="file">file:</label>
+            <input type="file" id="file" autocomplete="off" />
+            <input type="submit" style="grid-column: span 2" />
+            <label for="oss-progress">progress:</label>
+            <progress id="oss-progress" value="0" max="100" class="w-100"></progress>
+            <label for="file-url" class="b">file url:</label>
+            <input type="text" readonly id="file-url" autocomplete="off" />
+          </form>
+        </div>
+        <div class="gray pt3 b--black-20 bt bl-0 br-0 bb-0 b--dashed">
+          <span data-i18n="tip-3"></span>
+          <a href="https://github.com/Alex1990/tiny-oss" target="_blank" class="blue underline-hover no-underline"
+            >TinyOSS</a
+          >
+          <span data-i18n="tip-4"></span>
+          <a
+            href="https://oss.console.aliyun.com/"
+            target="_blank"
+            class="blue underline-hover no-underline"
+            data-i18n="tip-upload"
+          ></a>
+          <span data-i18n="tip-5"></span>
+        </div>
+        <div class="gray mt2">
+          <span data-i18n="tip-1"></span>
+          <a
+            href="https://github.com/netless-io/pre-convert-demo"
+            target="_blank"
+            class="blue no-underline underline-hover"
+            data-i18n="tip-src"
+          ></a>
+          <span data-i18n="tip-2"></span>
+        </div>
+      </div>
     </div>
     <div class="mv3 ba b--black-20 br2">
-      <div class="pa3 bg-black-05">
-        <h4 class="ma0" data-i18n="step-2">
-          第二步：预转码该文件，获取转换结果 URL
-        </h4>
+      <div class="pa3 bg-black-05 br2 br--top">
+        <h4 class="ma0 black-90" data-i18n="step-2"></h4>
       </div>
-      <div class="pa3 f6"></div>
+      <div class="pa3 f6">
+        <form id="convert-form" class="grid-form">
+          <label for="sdkToken">netless sdk token:</label>
+          <div class="flex">
+            <input type="text" id="sdkToken" autocomplete="off" class="flex-auto" />
+            <span class="ml1 relative">
+              <button id="toggle-modal-gen" data-i18n="local-gen"></button>
+              <div
+                id="modal-gen"
+                class="absolute shadow-1 ba b--gray pa2 right-0 top-1 bg-white w6"
+                style="display: none"
+              >
+                <div class="gray mb2" data-i18n="tip-8"></div>
+                <div class="grid-form">
+                  <label for="ak">ak:</label>
+                  <input id="ak" type="text" autocomplete="off" />
+                  <label for="sk">sk:</label>
+                  <input id="sk" type="text" autocomplete="off" />
+                  <label for="ms">life(ms):</label>
+                  <input id="ms" type="text" value="6000000" />
+                  <button id="gen" disabled style="grid-column: span 2" data-i18n="gen"></button>
+                </div>
+              </div>
+            </span>
+          </div>
+          <label for="file-url-2">file url:</label>
+          <input type="text" id="file-url-2" autocomplete="off" />
+          <label for="type">convert type:</label>
+          <select id="type">
+            <option value="static" selected>static</option>
+            <option value="dynamic">dynamic</option>
+          </select>
+          <input type="submit" style="grid-column: span 2" />
+          <label for="uuid">task uuid:</label>
+          <span id="uuid"></span>
+          <label for="status">status:</label>
+          <span id="status"></span>
+          <label for="step">current step:</label>
+          <span id="step"></span>
+          <label for="progress">progress:</label>
+          <progress id="progress" value="0" max="100" class="w-100"></progress>
+          <label for="result" class="self-start mt1">result:</label>
+          <div class="relative overflow-auto">
+            <output id="result" class="mt1 grid-form max-h-4"></output>
+            <div id="preview" class="absolute top-0" style="display: none">
+              <img src="" alt="preview" />
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="mv3 ba b--black-20 br2">
-      <div class="pa3 bg-black-05">
-        <h4 class="ma0" data-i18n="step-3">
-          第三步：将转换结果插入到某个房间中
-        </h4>
+      <div class="pa3 bg-black-05 br2 br--top">
+        <h4 class="ma0 black-90" data-i18n="step-3"></h4>
       </div>
-      <div class="pa3 f6"></div>
+      <div class="pa3 f6">
+        <form id="scenes-form" class="grid-form">
+          <label for="roomToken">sdk/room token:</label>
+          <input id="roomToken" type="text" autocomplete="off" />
+          <label for="roomUuid">room uuid:</label>
+          <input id="roomUuid" type="text" autocomplete="off" />
+          <button id="fetch-scenes" style="grid-column: span 2" data-i18n="get-path-list"></button>
+          <label for="scenes" class="self-start">result urls from step 2:<br />(1 url/row)</label>
+          <textarea id="scenes" rows="10" placeholder="one url one line"></textarea>
+          <label for="path">path:</label>
+          <select id="path">
+            <option value="" disabled selected data-i18n="tip-insert"></option>
+          </select>
+          <input type="submit" style="grid-column: span 2" />
+          <div class="mt2 pt2 bt bb-0 bl-0 br-0 b--dashed b--black-20" style="grid-column: span 2"></div>
+          <label for="jump-to">jump to:</label>
+          <div class="flex">
+            <select id="jump-to" class="flex-auto"></select>
+            <button id="jump" class="ml1" data-i18n="jump"></button>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="mv3 ba b--light-blue b--dotted">
       <div class="pa3 bg-washed-blue">
-        <h4 class="ma0" data-i18n="ref">参考文档</h4>
+        <h4 class="ma0 black-80" data-i18n="ref"></h4>
       </div>
-      <div class="pa3 f6"></div>
+      <div class="pa3 f6">
+        <ul class="list pa0 ma0">
+          <li class="pv1">
+            <a
+              href="https://help.aliyun.com/document_detail/32069.html"
+              target="_blank"
+              class="blue no-underline underline-hover"
+              >Aliyun OSS CORS</a
+            >
+          </li>
+          <li class="pv1">
+            <a
+              href="https://developer.netless.link/server-en/home/server-conversion"
+              target="_blank"
+              class="blue no-underline underline-hover"
+              >Netless Conversion API</a
+            >
+          </li>
+          <li class="pv1">
+            <a
+              href="https://developer.netless.link/server-en/home/server-scene"
+              target="_blank"
+              class="blue no-underline underline-hover"
+              >Netless Scenes API</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
     <script type="module" src="./src/main.js"></script>
   </body>
