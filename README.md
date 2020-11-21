@@ -1,7 +1,14 @@
-### 预转码 Demo
+### Pre Convert Demo
 
-您可以预转码 PPT 来降低服务器压力，并且转换好的资源可以重复使用。
+English | [简体中文](README_cn.md)
 
-### 开源协议
+Demo of pre converting PPT to reduce netless' server pressure.
+
+Branches:
+
+- main: pure front-end demo, able to [run in browser](https://netless-io.github.io/pre-convert-demo).
+-
+
+### License
 
 The MIT license.
